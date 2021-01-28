@@ -1,5 +1,5 @@
 {
-  "name": "connect4",
+  "name": "connect-four",
   "language": "javascript",
   "manager": "npm",
   "prefix": "!"
