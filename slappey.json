@@ -1,0 +1,6 @@
+{
+  "name": "connect4",
+  "language": "javascript",
+  "manager": "npm",
+  "prefix": "!"
+}
