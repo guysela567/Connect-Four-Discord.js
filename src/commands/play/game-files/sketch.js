@@ -61,6 +61,7 @@ class Game {
     this.isGameOver = false;
     this.nameDict = nameDict;
     this.attachments = [];
+    this.images = [];
 
     // setup
     this.grid = this.createGrid();
@@ -75,6 +76,8 @@ class Game {
     if (y >= 0) {
       this.grid[y][x - 1].type = this.turn;
       this.turn = this.turn == player1 ? player2 : player1;
+    } else {
+      return true;
     }
   
     this.drawGrid();
@@ -83,7 +86,10 @@ class Game {
       this.tie_screen();
     if (this.getWinner() != null)
       this.winner_screen(this.getWinner());
-    
+  }
+
+  playerWaiting() {
+    return this.turn == 'red' ? 'yellow' : 'red';
   }
 
   //---screens---\\
@@ -99,7 +105,7 @@ class Game {
   winner_screen(winner) {
     this.fill('white');
     this.rect(-1, -1, this.canvas.width + 2, SQUARE_SIZE);
-    this.fill(winner);
+    this.fill('black');
     this.ctx.fillText(`${this.nameDict[winner]} won!`, this.canvas.width / 2, SQUARE_SIZE / 2);
     this.isGameOver = true;
   }

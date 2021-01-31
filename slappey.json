@@ -2,5 +2,5 @@
   "name": "connect-four",
   "language": "javascript",
   "manager": "npm",
-  "prefix": "!"
+  "prefix": "c4!"
 }
