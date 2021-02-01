@@ -1,5 +1,5 @@
 const BaseEvent = require('../../utils/structures/BaseEvent');
-const db = require('../../db/prefix.json');
+const getData = require('../../utils/getData');
 
 module.exports = class MessageEvent extends BaseEvent {
   constructor() {
@@ -9,6 +9,7 @@ module.exports = class MessageEvent extends BaseEvent {
   async run(client, message) {
     if (message.author.bot) return;
 
+    const db = await getData('prefix');
     const prefix = db[message.guild.id] || client.prefix;
 
     if (message.mentions.users.array().includes(client.user))

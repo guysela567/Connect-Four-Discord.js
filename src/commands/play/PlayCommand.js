@@ -2,7 +2,7 @@ const BaseCommand = require('../../utils/structures/BaseCommand');
 const Discord = require('discord.js');
 const Game = require('./game-files/sketch');
 const GIFEncoder = require('gif-encoder-2');
-const db = require('../../db/setup.json');
+const getData = require('../../utils/getData');
 const fetch = require('node-fetch');
 require('dotenv').config();
 
@@ -26,6 +26,7 @@ module.exports = class PlayCommand extends BaseCommand {
 
   async run(client, message, args) {
     // check if server is set up
+    const db = await getData('setup');
     if (db[message.guild.id]) {
       const channelId = db[message.guild.id];
       if (message.channel.id != '804357139132186655' && // bot-testing
